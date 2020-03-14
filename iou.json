@@ -1,0 +1,26 @@
+
+# GRADED FUNCTION: iou
+
+def iou(box1, box2):
+    
+    ### START CODE HERE ### (≈ 5 lines)
+    xi1 = max(box1[0],box2[0])
+    yi1 = max(box1[1],box2[1])
+    xi2 = min(box1[2],box2[2])
+    yi2 = min(box1[3],box2[3])
+    inter_area = (xi2-xi1) * (yi2-yi1)
+    ### END CODE HERE ###    
+
+    # Calculate the Union area by using Formula: Union(A,B) = A + B - Inter(A,B)
+    ### START CODE HERE ### (≈ 3 lines)
+    box1_area = max(box1[2]-box1[0],0)*max(0,(box1[3]-box1[1]))
+    box2_area = max(box2[2]-box2[0],0)*max(0,(box2[3]-box2[1]))
+    union_area = box1_area + box2_area - inter_area
+    ### END CODE HERE ###
+    
+    # compute the IoU
+    ### START CODE HERE ### (≈ 1 line)
+    iou = float(inter_area)/float(union_area)
+    ### END CODE HERE ###
+    
+    return iou
